@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+
+{% block title %}Create New Product{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header">
+          <h3>Create a New Product</h3>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+              {{ form.title.label(class="form-label") }}
+              {{ form.title(class="form-control") }}
+              {% if form.title.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="mb-3">
+              {{ form.meta_description.label(class="form-label") }}
+              {{ form.meta_description(class="form-control") }}
+              <small class="text-muted">{{ form.meta_description.description }}</small>
+              {% if form.meta_description.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.meta_description.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="mb-3">
+              {{ form.content.label(class="form-label") }}
+              {{ form.content(class="form-control", rows=10) }}
+              {% if form.content.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="mb-3">
+              {{ form.key_features.label(class="form-label") }}
+              {{ form.key_features(class="form-control", rows=5) }}
+              <small class="text-muted">{{ form.key_features.description }}</small>
+              {% if form.key_features.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.key_features.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="mb-3">
+              {{ form.technical_specs.label(class="form-label") }}
+              {{ form.technical_specs(class="form-control", rows=5) }}
+              <small class="text-muted">{{ form.technical_specs.description }}</small>
+              {% if form.technical_specs.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.technical_specs.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="mb-3">
+              {{ form.tags.label(class="form-label") }}
+              {{ form.tags(class="form-control") }}
+              <small class="text-muted">{{ form.tags.description }}</small>
+              {% if form.tags.errors %}
+                <div class="invalid-feedback d-block">
+                  {% for error in form.tags.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="mb-3 form-check">
+              {{ form.published(class="form-check-input") }}
+              {{ form.published.label(class="form-check-label") }}
+              <small class="text-muted d-block">{{ form.published.description }}</small>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="{{ url_for('product_management') }}" class="btn btn-secondary me-md-2">Cancel</a>
+              {{ form.submit(class="btn btn-primary") }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /service
+Allow: /blog/
+Allow: /product/
+Allow: /contact
+Disallow: /auth/
+Disallow: /auth/*
+Disallow: /api/
+
+Sitemap: https://kogabecybershield.com/sitemap.xml
